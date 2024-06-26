@@ -16,6 +16,14 @@ pub struct GothamStore {
     data: BTreeMap<TypeId, Box<dyn Any>>,
 }
 
+impl std::ops::Deref for GothamStore {
+    type Target = BTreeMap<TypeId, Box<dyn Any>>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.data
+    }
+}
+
 impl GothamStore {
     /// Puts a value into the `GothamStore`. One value of each type is retained.
     /// Successive calls to `put` will overwrite the existing value of the same
@@ -69,11 +77,6 @@ impl GothamStore {
     /// If a value of type `T` is not present in `GothamStore`.
     pub fn take<T: 'static>(&mut self) -> T {
         self.try_take().unwrap_or_else(|| missing::<T>())
-    }
-
-    /// Returns `true` if the `GothamStore` contains no elements.
-    pub fn is_empty(&self) -> bool {
-        self.data.is_empty()
     }
 }
 
@@ -191,12 +194,15 @@ mod tests {
     }
 
     #[test]
-    fn is_empty() {
+    fn deref() {
         let mut store = GothamStore::default();
         assert!(store.is_empty());
+        assert_eq!(store.len(), 0);
         store.put(MyStruct { value: 100 });
         assert!(!store.is_empty());
+        assert_eq!(store.len(), 1);
         store.take::<MyStruct>();
         assert!(store.is_empty());
+        assert_eq!(store.len(), 0);
     }
 }
