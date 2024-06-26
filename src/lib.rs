@@ -1,3 +1,4 @@
+// Based on https://github.com/denoland/deno_core/blob/0.290.0/core/gotham_state.rs
 // Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
 // Forked from Gotham:
 // https://github.com/gotham-rs/gotham/blob/bcbbf8923789e341b7a0e62c59909428ca4e22e2/gotham/src/state/mod.rs
