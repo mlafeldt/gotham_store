@@ -1,7 +1,7 @@
 [package]
 name = "gotham_store"
 version = "1.0.0"
-description = "Easily store and retrieve one instance of any Rust type"
+description = "Easily store and retrieve one value of any Rust type"
 authors = ["the Deno authors", "Mathias Lafeldt <mathias.lafeldt@gmail.com>"]
 license = "MIT"
 readme = "README.md"

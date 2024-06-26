@@ -4,7 +4,7 @@
 // https://github.com/gotham-rs/gotham/blob/bcbbf8923789e341b7a0e62c59909428ca4e22e2/gotham/src/state/mod.rs
 // Copyright 2017 Gotham Project Developers. MIT license.
 
-//! Easily store and retrieve one instance of any Rust type.
+//! Easily store and retrieve one value of any Rust type.
 
 #![allow(clippy::should_implement_trait)]
 
