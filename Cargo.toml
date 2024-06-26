@@ -1,6 +1,13 @@
 [package]
 name = "gotham_store"
-version = "0.1.0"
+version = "1.0.0"
+description = "Easily store and retrieve one instance of any Rust type"
+authors = ["the Deno authors", "Mathias Lafeldt <mathias.lafeldt@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/mlafeldt/gotham_store"
+documentation = "https://docs.rs/gotham_store/"
+homepage = "https://crates.io/crates/gotham_store"
 edition = "2021"
 
 [dependencies]
