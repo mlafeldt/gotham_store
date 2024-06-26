@@ -8,9 +8,7 @@
 
 #![allow(clippy::should_implement_trait)]
 
-use std::any::type_name;
-use std::any::Any;
-use std::any::TypeId;
+use std::any::{type_name, Any, TypeId};
 use std::collections::BTreeMap;
 
 #[derive(Default, Debug)]
@@ -71,6 +69,11 @@ impl GothamStore {
     /// If a value of type `T` is not present in `GothamStore`.
     pub fn take<T: 'static>(&mut self) -> T {
         self.try_take().unwrap_or_else(|| missing::<T>())
+    }
+
+    /// Returns `true` if the `GothamStore` contains no elements.
+    pub fn is_empty(&self) -> bool {
+        self.data.is_empty()
     }
 }
 
@@ -185,5 +188,15 @@ mod tests {
     fn missing() {
         let store = GothamStore::default();
         let _ = store.borrow::<MyStruct>();
+    }
+
+    #[test]
+    fn is_empty() {
+        let mut store = GothamStore::default();
+        assert!(store.is_empty());
+        store.put(MyStruct { value: 100 });
+        assert!(!store.is_empty());
+        store.take::<MyStruct>();
+        assert!(store.is_empty());
     }
 }
