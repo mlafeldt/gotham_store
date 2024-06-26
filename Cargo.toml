@@ -10,4 +10,7 @@ documentation = "https://docs.rs/gotham_store/"
 homepage = "https://crates.io/crates/gotham_store"
 edition = "2021"
 
+[lib]
+path = "lib.rs"
+
 [dependencies]
